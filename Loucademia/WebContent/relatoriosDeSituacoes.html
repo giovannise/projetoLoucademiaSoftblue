@@ -1,0 +1,106 @@
+<!--  cabeçalho início -->
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<!-- iso que define telado com ç e acento -->
+		<meta charset="ISO-8859-1"> 
+		<title>Loucademia</title>
+		<link rel="stylesheet" type="text/css" href="css/Loucademia_Estilo.css">
+	</head>
+	<body>
+		<!-- isso define o "cabeçalho" da página, parte comum em todas as páginas -->
+		<header>
+			<img src="images/Loucademia_Logotipo.png">
+			<!-- define um menu no cabeçalho -->
+			<nav>
+				<div>
+					<a href="novoAluno.html">Novo aluno</a><br>
+					<a href="pesquisaDeAluno.html">Pesquisa de aluno</a><br>
+					<a href="controleDeAcesso.html">Controle de acesso</a><br>
+					<a href="relatoriosDeEntradaSaida.html">Relatórios de Entrada e Saída</a><br>
+					<a href="relatoriosDeSituacoes.html">Relatórios de Situações</a><br>
+				</div>
+			</nav>
+		</header>
+		<!-- cabeçalho final -->	
+	
+		<h1>Relatório de Situações</h1>
+		
+		<div id="infoMessage">
+			<!-- aqui vai eventual mensagem de sucesso ou erro -->
+		</div>
+		
+		<br>
+		
+		<form>
+			<fieldset>
+				<legend>Parâmetros da Pesquisa</legend>
+				
+				<label for="situacao">Situação:</label>
+				<select name=situacao id="situacao">
+					<option>Ativo</option>
+					<option>Inativo</option>
+					<option>Com pendência</option>
+				</select>	
+			</fieldset>
+			
+			<input type="submit" value="Gerar relatório">
+		</form>
+		
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Situação</th>
+				<th>Celular</th>
+				<th>Fixo</th>
+				<th>Ações</th>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>André</td>
+				<td>Ativo</td>
+				<td>55 1111111</td>
+				<td>55 9999999</td>
+				<td>
+					<input type="button" value="Editar">
+				</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Carlos</td>
+				<td>Inativo</td>
+				<td>51 55555555</td>
+				<td>51 44444444</td>
+				<td>
+					<input type="button" value="Editar">
+				</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Gi</td>
+				<td>Ativo</td>
+				<td>88 888888888</td>
+				<td>88 777777777</td>
+				<td>
+					<input type="button" value="Editar">
+				</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>Matheus</td>
+				<td>Com pendência</td>
+				<td>88 666666666</td>
+				<td>88 333333333</td>
+				<td>
+					<input type="button" value="Editar">
+				</td>
+			</tr>
+		</table>
+		
+	<!-- rodapé início -->
+	</body>
+</html>
+<!-- rodapé final -->
+
+
