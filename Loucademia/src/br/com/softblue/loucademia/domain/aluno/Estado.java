@@ -47,5 +47,5 @@ public class Estado {
 			return false;
 		return true;
 	}
-	
+	 
 }

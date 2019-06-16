@@ -47,7 +47,7 @@ public class Telefone {
 		result = prime * result + ((numeroFixo == null) ? 0 : numeroFixo.hashCode());
 		return result;
 	}
-	
+	 
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

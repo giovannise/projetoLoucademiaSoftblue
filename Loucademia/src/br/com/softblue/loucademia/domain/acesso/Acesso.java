@@ -40,7 +40,7 @@ public class Acesso {
 	public String toString() {
 		return "Acesso [id=" + id + ", aluno=" + aluno + ", entrada=" + entrada + ", saida=" + saida + "]";
 	}
-	
+	 
 	@Override
 	public int hashCode() {
 		final int prime = 31;

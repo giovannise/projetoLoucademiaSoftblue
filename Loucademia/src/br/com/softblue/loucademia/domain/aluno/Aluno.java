@@ -91,7 +91,7 @@ public class Aluno {
 		result = prime * result + ((matricula == null) ? 0 : matricula.hashCode());
 		return result;
 	}
-	
+	 
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

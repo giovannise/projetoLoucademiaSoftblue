@@ -63,7 +63,7 @@ public class Endereco {
 			result = prime * result + ((rua == null) ? 0 : rua.hashCode());
 			return result;
 		}
-		
+		 
 		@Override
 		public boolean equals(Object obj) {
 			if (this == obj)
