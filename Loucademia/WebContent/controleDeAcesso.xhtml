@@ -1,0 +1,42 @@
+<!--  cabecalho inicio -->
+<!-- <?xml version="1.0" encoding="UTF-8" ?> --><!-- tive que deixar comentado por enquanto para parar o erro -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	lang="pt-br">
+	
+	<ui:composition template="layout.xhtml">
+		<ui:define name="conteudo">	
+		
+			<h1>#{controleAcessoBean.titulo}</h1>
+			
+			<h:panelGroup rendered="#{!facesContext.messageList.isEmpty()}">
+				<div id="infoMessage">
+					<h:messages />
+				</div>
+			</h:panelGroup>
+			
+			<br />
+			
+			<form>
+				<fieldset>
+					<legend>Parâmetros de Acesso</legend>
+					
+					<label for="matricula">Matrícula:</label><br />
+					<input type="text" jsf:value="#{controleAcessoBean.matricula}" id="matricula" jsf:label="Matrícula" /><br />
+					
+					<label for="rg">RG:</label><br />
+					<input type="text" jsf:value="#{controleAcessoBean.rg}" id="rg" jsf:label="RG" /><br />
+						
+				</fieldset>
+				
+				<br />
+				
+				<input type="submit" value="Registrar Acesso" jsf:action="#{controleAcessoBean.registrarAcesso}" />
+			</form>
+		</ui:define>
+	</ui:composition>
+</html>
