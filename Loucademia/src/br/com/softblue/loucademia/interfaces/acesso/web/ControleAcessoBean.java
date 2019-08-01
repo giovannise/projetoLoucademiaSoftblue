@@ -28,7 +28,6 @@ public class ControleAcessoBean implements Serializable {
 	private String titulo = "Controle de Acesso";
 	
 	public String registrarAcesso() {
-		System.out.println("está entrando no metodo");
 		TipoAcesso tipoAcesso;
 		
 		try {
