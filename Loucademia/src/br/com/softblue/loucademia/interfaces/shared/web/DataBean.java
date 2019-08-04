@@ -20,7 +20,7 @@ public class DataBean implements Serializable {
 
 	@EJB
 	private DataService dataService;
-	
+	 
 	public Sexo[] getSexos() {
 		return dataService.getSexos();
 	}

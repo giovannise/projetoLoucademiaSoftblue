@@ -20,7 +20,7 @@ public class RelatorioSituacoesBean implements Serializable {
 
 	@EJB
 	private AlunoService alunoService;
-	
+	 
 	@Inject
 	@RequestParameterMap
 	private Map<String, String> requestParamsMap;

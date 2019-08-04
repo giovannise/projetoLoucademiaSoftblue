@@ -22,7 +22,7 @@ public class RelatorioEntradaSaidaBean implements Serializable {
 
 	@EJB
 	private AlunoService alunoService;
-	
+	 
 	@Inject
 	private FacesContext facesContext;
 	
