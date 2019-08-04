@@ -1,5 +1,8 @@
 package br.com.softblue.loucademia.domain.aluno;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.Year;
 import java.util.List;
 
@@ -10,6 +13,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import br.com.softblue.loucademia.application.util.StringUtils;
+import br.com.softblue.loucademia.domain.acesso.Acesso;
 import br.com.softblue.loucademia.domain.aluno.Aluno.Situacao;
 
 //metodo que interage com o banco de dados 
@@ -106,5 +110,66 @@ public class AlunoRepository {
 		return em.createQuery("SELECT a FROM Aluno a WHERE a.situacao = :situacao ORDER BY a.nome", Aluno.class)
 				.setParameter("situacao", situacao)
 				.getResultList();
+	}
+	
+	public List<Acesso> listAcessosAlunos(String matricula, LocalDate dataInicial, LocalDate dataFinal){
+		StringBuilder jpql = new StringBuilder("SELECT a FROM Acesso a WHERE ");
+		
+		if (!StringUtils.isEmpty(matricula)) {
+			jpql.append("a.aluno.matricula = :matricula AND ");
+		}
+		
+		if(dataInicial != null) {
+			//compara da meia noite do dia colocado até as 23:59 deste mesmo dia
+			jpql.append("a.entrada >= :entradaInicio AND ");
+		}
+		
+		if(dataFinal != null) {
+			//compara da meia noite do dia colocado até as 23:59 deste mesmo dia
+			jpql.append("a.saida <= :saidaFim AND ");
+		}
+		
+		jpql.append("1 = 1 ORDER BY a.entrada");
+		
+		TypedQuery<Acesso> q = em.createQuery(jpql.toString(), Acesso.class);
+		
+		if (!StringUtils.isEmpty(matricula)) {
+			q.setParameter("matricula", matricula);
+		}
+		
+		/* 
+		//NESTE BLOCO ESTAVA COMPARANDO APENAS A DATA INICIAL EM SI, SEM ENGLOBAR DATAS FUTURAS CONFORME O COMENTÁRIO ABAIXO, DENTRO DO IF.
+		//SERÁ IMPLEMENTADA A LÓGICA CORRETA, MAS DEIXAREI ESTE BLOCO PARA CONSULTA.
+		if(dataInicial != null) {
+			//compara da meia noite do dia colocado até as 23:59 deste mesmo dia
+			LocalDateTime ldt = LocalDateTime.of(dataInicial, LocalTime.of(0, 0, 0)); //0, 0, 0 porque é para começar as 00:00:00, ou seja, meia noite e 0 segundos!!
+			q.setParameter("entradaInicio", ldt);
+			
+			ldt = LocalDateTime.of(dataInicial, LocalTime.of(23, 59, 59)); //porque é para terminar as 23:59:59, ou seja, antes de virar meia noite de novo!!
+			q.setParameter("entradaFim", ldt);
+		}
+		
+		if(dataFinal != null) {
+			LocalDateTime ldt = LocalDateTime.of(dataFinal, LocalTime.of(0, 0, 0)); //0, 0, 0 porque é para começar as 00:00:00, ou seja, meia noite e 0 segundos!!
+			q.setParameter("saidaInicio", ldt);
+			
+			ldt = LocalDateTime.of(dataFinal, LocalTime.of(23, 59, 59)); //porque é para terminar as 23:59:59, ou seja, antes de virar meia noite de novo!!
+			q.setParameter("saidaFim", ldt);
+		}
+		*/
+		
+		if(dataInicial != null) {
+			//compara da meia noite do dia colocado até as 23:59 deste mesmo dia
+			LocalDateTime ldt = LocalDateTime.of(dataInicial, LocalTime.of(0, 0, 0)); //0, 0, 0 porque é para começar as 00:00:00, ou seja, meia noite e 0 segundos!!
+			q.setParameter("entradaInicio", ldt);
+			
+		}
+		
+		if(dataFinal != null) {
+			LocalDateTime ldt = LocalDateTime.of(dataFinal, LocalTime.of(23, 59, 59)); //porque é para terminar as 23:59:59, ou seja, antes de virar meia noite de novo!!
+			q.setParameter("saidaFim", ldt);
+		}
+		
+		return q.getResultList();
 	}
 }
