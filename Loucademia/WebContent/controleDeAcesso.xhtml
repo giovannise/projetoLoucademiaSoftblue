@@ -9,17 +9,8 @@
 	lang="pt-br">
 	
 	<ui:composition template="layout.xhtml">
+		<ui:param name="title" value="#{controleAcessoBean.titulo}" />
 		<ui:define name="conteudo">	
-		
-			<h1>#{controleAcessoBean.titulo}</h1>
-			
-			<h:panelGroup rendered="#{!facesContext.messageList.isEmpty()}">
-				<div id="infoMessage">
-					<h:messages />
-				</div>
-			</h:panelGroup>
-			
-			<br />
 			
 			<form jsf:id="form">
 				<fieldset>

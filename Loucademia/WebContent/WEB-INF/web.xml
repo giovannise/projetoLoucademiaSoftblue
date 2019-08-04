@@ -2,12 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>Loucademia</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>bemVindo.faces</welcome-file>
   </welcome-file-list>
   <servlet>
     <servlet-name>Faces Servlet</servlet-name>
@@ -18,4 +13,13 @@
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.faces</url-pattern>
   </servlet-mapping>
+  
+  <security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>XHTML files</web-resource-name>
+  		<!-- name é apenas o nome que estou dando para a regra e url pattern são quais arquivos serão influenciados, nesse caso, todos os .xhtml -->
+  		<url-pattern>*.xhtml</url-pattern>
+  	</web-resource-collection>
+  	<auth-constraint /> <!-- se eu deixar vazio, digo que todos os usuários terão restrições / é protegido / ninguém pode acessar -->
+  </security-constraint>
 </web-app>
